@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Violet Background Live Text Slide Banner</title>
+    <title>PNG Overlay Live Text Banner</title>
     <style>
         * {
             box-sizing: border-box;
@@ -11,26 +11,27 @@
             padding: 0;
         }
 
-        body {
-            /* Nilagyan ng violet/dark purple ang background ng buong page */
-            background-color: #1a0b2e;
+        /* Walang background ang page (Transparent PNG style) */
+        html, body {
+            background-color: transparent !important;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             padding: 20px;
+            overflow: hidden;
         }
 
-        /* Banner Container na may violet gradient at subtle border */
+        /* Eksaktong Oval/Pill Shape sa Larawan */
         .banner-container {
             width: 100%;
             max-width: 900px;
-            height: 60px;
-            background: linear-gradient(135deg, rgba(45, 15, 78, 0.9) 0%, rgba(75, 25, 120, 0.9) 100%);
-            border: 2px solid rgba(147, 51, 234, 0.5);
+            height: 58px;
+            background: linear-gradient(180deg, #ffffff 0%, #f1f3f5 100%);
+            border: 2.5px solid #2d3a60;
             border-radius: 50px;
-            box-shadow: 0 4px 20px rgba(75, 25, 120, 0.5);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
             overflow: hidden;
             position: relative;
             display: flex;
@@ -56,7 +57,7 @@
             }
         }
 
-        /* Pause slide kapag hinawakan o ini-edit */
+        /* Pause kapag itinaas ang mouse o kapag nag-i-edit ng text */
         .banner-container:hover .slide-track,
         .slide-track:focus-within {
             animation-play-state: paused;
@@ -69,50 +70,47 @@
         }
 
         .text-item {
-            font-size: 1.3rem;
-            font-weight: 900;
-            color: #ffffff;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
-            letter-spacing: 0.5px;
-            padding: 0 10px;
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: #1a1a1a;
+            letter-spacing: 0.3px;
+            padding: 0 8px;
             outline: none;
             cursor: text;
         }
 
         .text-item.highlight {
-            color: #d8b4fe; /* Banayad na violet/lavender highlight para sa Connect With Us */
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            color: #333333;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
+            font-weight: 900;
+            letter-spacing: 1px;
         }
 
-        /* Icon Image Styling */
+        /* Icon Images */
         .banner-icon {
-            width: 36px;
-            height: 36px;
+            width: 32px;
+            height: 32px;
             object-fit: cover;
             border-radius: 50%;
-            margin: 0 12px;
+            margin: 0 10px;
             vertical-align: middle;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
         }
 
         .separator {
-            color: #d8b4fe;
+            color: #2d3a60;
             font-weight: bold;
-            font-size: 1.4rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
-            opacity: 0.8;
+            font-size: 1.2rem;
+            opacity: 0.6;
             margin: 0 15px;
         }
     </style>
 </head>
 <body>
 
-    <!-- Violet Theme Live Text Banner -->
+    <!-- Main Live Text Banner -->
     <div class="banner-container">
         <div class="slide-track">
-            <!-- Unang pangkat ng Live Text at Local Images -->
+            <!-- Unang pangkat ng Live Text at Images -->
             <div class="slide-group">
                 <span class="text-item highlight" contenteditable="true">CONNECT WITH US</span>
                 <img src="./logo1.png" alt="Icon 1" class="banner-icon">
