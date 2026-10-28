@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Continuous Live Text Slide Banner with Icons</title>
+    <title>Violet Background Live Text Slide Banner</title>
     <style>
         * {
             box-sizing: border-box;
@@ -12,7 +12,8 @@
         }
 
         body {
-            background-color: #0b0f19;
+            /* Nilagyan ng violet/dark purple ang background ng buong page */
+            background-color: #1a0b2e;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -21,15 +22,15 @@
             padding: 20px;
         }
 
-        /* Pill Container */
+        /* Banner Container na may violet gradient at subtle border */
         .banner-container {
             width: 100%;
-            max-width: 850px;
+            max-width: 900px;
             height: 60px;
-            background: linear-gradient(180deg, #f8f9fa 0%, #e9ecef 100%);
-            border: 2px solid #2b3a67;
+            background: linear-gradient(135deg, rgba(45, 15, 78, 0.9) 0%, rgba(75, 25, 120, 0.9) 100%);
+            border: 2px solid rgba(147, 51, 234, 0.5);
             border-radius: 50px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 20px rgba(75, 25, 120, 0.5);
             overflow: hidden;
             position: relative;
             display: flex;
@@ -55,7 +56,7 @@
             }
         }
 
-        /* Pause slide kapag hinawakan ng mouse o kapag ini-edit */
+        /* Pause slide kapag hinawakan o ini-edit */
         .banner-container:hover .slide-track,
         .slide-track:focus-within {
             animation-play-state: paused;
@@ -68,9 +69,10 @@
         }
 
         .text-item {
-            font-size: 1.15rem;
-            font-weight: 800;
-            color: #1a1a1a;
+            font-size: 1.3rem;
+            font-weight: 900;
+            color: #ffffff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
             letter-spacing: 0.5px;
             padding: 0 10px;
             outline: none;
@@ -78,34 +80,36 @@
         }
 
         .text-item.highlight {
-            color: #2b3a67;
+            color: #d8b4fe; /* Banayad na violet/lavender highlight para sa Connect With Us */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
             text-transform: uppercase;
             letter-spacing: 1.5px;
         }
 
         /* Icon Image Styling */
         .banner-icon {
-            width: 32px;
-            height: 32px;
+            width: 36px;
+            height: 36px;
             object-fit: cover;
             border-radius: 50%;
-            margin: 0 10px;
+            margin: 0 12px;
             vertical-align: middle;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
         }
 
         .separator {
-            color: #2b3a67;
+            color: #d8b4fe;
             font-weight: bold;
-            font-size: 1.2rem;
-            opacity: 0.6;
+            font-size: 1.4rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+            opacity: 0.8;
             margin: 0 15px;
         }
     </style>
 </head>
 <body>
 
-    <!-- Main Live Text Banner -->
+    <!-- Violet Theme Live Text Banner -->
     <div class="banner-container">
         <div class="slide-track">
             <!-- Unang pangkat ng Live Text at Local Images -->
