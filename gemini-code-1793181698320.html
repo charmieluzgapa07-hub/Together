@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Continuous Live Text Slide Banner with Icons</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #0b0f19;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            padding: 20px;
+        }
+
+        /* Pill Container */
+        .banner-container {
+            width: 100%;
+            max-width: 850px;
+            height: 60px;
+            background: linear-gradient(180deg, #f8f9fa 0%, #e9ecef 100%);
+            border: 2px solid #2b3a67;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        /* Continuous Sliding Track */
+        .slide-track {
+            display: flex;
+            align-items: center;
+            white-space: nowrap;
+            width: max-content;
+            animation: continuousSlide 18s linear infinite;
+        }
+
+        /* Continuous Slide Keyframes */
+        @keyframes continuousSlide {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* Pause slide kapag hinawakan ng mouse o kapag ini-edit */
+        .banner-container:hover .slide-track,
+        .slide-track:focus-within {
+            animation-play-state: paused;
+        }
+
+        /* Live Text Styles */
+        .slide-group {
+            display: flex;
+            align-items: center;
+        }
+
+        .text-item {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: #1a1a1a;
+            letter-spacing: 0.5px;
+            padding: 0 10px;
+            outline: none;
+            cursor: text;
+        }
+
+        .text-item.highlight {
+            color: #2b3a67;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        /* Icon Image Styling */
+        .banner-icon {
+            width: 32px;
+            height: 32px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin: 0 10px;
+            vertical-align: middle;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        .separator {
+            color: #2b3a67;
+            font-weight: bold;
+            font-size: 1.2rem;
+            opacity: 0.6;
+            margin: 0 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Main Live Text Banner -->
+    <div class="banner-container">
+        <div class="slide-track">
+            <!-- Unang pangkat ng Live Text at Local Images -->
+            <div class="slide-group">
+                <span class="text-item highlight" contenteditable="true">CONNECT WITH US</span>
+                <img src="./logo1.png" alt="Icon 1" class="banner-icon">
+                <span class="text-item" contenteditable="true">TOGETHER Church Skyline - UPC</span>
+                <img src="./logo2.png" alt="Icon 2" class="banner-icon">
+                <span class="text-item" contenteditable="true">TOGETHER Worship</span>
+                <span class="separator">•</span>
+            </div>
+
+            <!-- Pangalawang pangkat para sa tuluy-tuloy na seamless loop -->
+            <div class="slide-group">
+                <span class="text-item highlight" contenteditable="true">CONNECT WITH US</span>
+                <img src="./logo1.png" alt="Icon 1" class="banner-icon">
+                <span class="text-item" contenteditable="true">TOGETHER Church Skyline - UPC</span>
+                <img src="./logo2.png" alt="Icon 2" class="banner-icon">
+                <span class="text-item" contenteditable="true">TOGETHER Worship</span>
+                <span class="separator">•</span>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
