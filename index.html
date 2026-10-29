@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PNG Overlay Live Text Banner</title>
+    <title>PNG Overlay Live Text Banner with Compact Clock</title>
     <style>
         * {
             box-sizing: border-box;
@@ -11,7 +11,7 @@
             padding: 0;
         }
 
-        /* Walang background ang page (Transparent PNG style) */
+        /* Transparent PNG background overlay */
         html, body {
             background-color: transparent !important;
             display: flex;
@@ -23,10 +23,34 @@
             overflow: hidden;
         }
 
-        /* Eksaktong Oval/Pill Shape sa Larawan */
-        .banner-container {
+        /* Container Wrapper */
+        .stream-overlay-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 6px;
             width: 100%;
             max-width: 900px;
+        }
+
+        /* Mas maliit at Compact na Live Clock Badge */
+        .live-clock-badge {
+            background: #2d3a60;
+            color: #ffffff;
+            font-size: 0.85rem; /* Pinaliit na font size */
+            font-weight: 700;
+            padding: 3px 12px; /* Binawasan ang padding para maging mas compact */
+            border-radius: 15px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+            letter-spacing: 1px;
+            display: inline-block;
+            margin-left: 15px;
+            border: 1px solid #ffffff;
+        }
+
+        /* Main Pill Banner Container */
+        .banner-container {
+            width: 100%;
             height: 58px;
             background: linear-gradient(180deg, #ffffff 0%, #f1f3f5 100%);
             border: 2.5px solid #2d3a60;
@@ -107,30 +131,65 @@
 </head>
 <body>
 
-    <!-- Main Live Text Banner -->
-    <div class="banner-container">
-        <div class="slide-track">
-            <!-- Unang pangkat ng Live Text at Images -->
-            <div class="slide-group">
-                <span class="text-item highlight" contenteditable="true">CONNECT WITH US</span>
-                <img src="./logo1.png" alt="Icon 1" class="banner-icon">
-                <span class="text-item" contenteditable="true">TOGether Church Skyline - UPC</span>
-                <img src="./logo2.png" alt="Icon 2" class="banner-icon">
-                <span class="text-item" contenteditable="true">TOGETHER Church - UPC</span>
-                <span class="separator">•</span>
-            </div>
+    <div class="stream-overlay-wrapper">
+        <!-- Mas maliit na Live Real-Time Clock Badge -->
+        <div id="liveClock" class="live-clock-badge">12:00:00 AM</div>
 
-            <!-- Pangalawang pangkat para sa tuluy-tuloy na seamless loop -->
-            <div class="slide-group">
-                <span class="text-item highlight" contenteditable="true">CONNECT WITH US</span>
-                <img src="./logo1.png" alt="Icon 1" class="banner-icon">
-                <span class="text-item" contenteditable="true">TOGether Church Skyline - UPC</span>
-                <img src="./logo2.png" alt="Icon 2" class="banner-icon">
-                <span class="text-item" contenteditable="true">TOGether Church - UPC</span>
-                <span class="separator">•</span>
+        <!-- Main Live Text Banner -->
+        <div class="banner-container">
+            <div class="slide-track">
+                <!-- Unang pangkat ng Live Text at Images -->
+                <div class="slide-group">
+                    <span class="text-item highlight" contenteditable="true">CONNECT WITH US</span>
+                    <img src="./logo1.png" alt="Icon 1" class="banner-icon">
+                    <span class="text-item" contenteditable="true">TOGETHER Church Skyline - UPC</span>
+                    <img src="./logo2.png" alt="Icon 2" class="banner-icon">
+                    <span class="text-item" contenteditable="true">TOGETHER Worship</span>
+                    <span class="separator">•</span>
+                </div>
+
+                <!-- Pangalawang pangkat para sa tuluy-tuloy na seamless loop -->
+                <div class="slide-group">
+                    <span class="text-item highlight" contenteditable="true">CONNECT WITH US</span>
+                    <img src="./logo1.png" alt="Icon 1" class="banner-icon">
+                    <span class="text-item" contenteditable="true">TOGETHER Church Skyline - UPC</span>
+                    <img src="./logo2.png" alt="Icon 2" class="banner-icon">
+                    <span class="text-item" contenteditable="true">TOGETHER Worship</span>
+                    <span class="separator">•</span>
+                </div>
             </div>
         </div>
     </div>
+
+    <script>
+        function startLiveClock() {
+            const clockElement = document.getElementById('liveClock');
+            if (!clockElement) return;
+
+            function refreshTime() {
+                const now = new Date();
+                let hours = now.getHours();
+                const minutes = String(now.getMinutes()).padStart(2, '0');
+                const seconds = String(now.getSeconds()).padStart(2, '0');
+                const ampm = hours >= 12 ? 'PM' : 'AM';
+
+                hours = hours % 12;
+                hours = hours ? hours : 12;
+                const formattedHours = String(hours).padStart(2, '0');
+
+                clockElement.textContent = `${formattedHours}:${minutes}:${seconds} ${ampm}`;
+            }
+
+            refreshTime();
+            setInterval(refreshTime, 1000);
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', startLiveClock);
+        } else {
+            startLiveClock();
+        }
+    </script>
 
 </body>
 </html>
